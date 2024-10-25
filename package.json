@@ -1,0 +1,17 @@
+{
+  "name": "apicrediweb",
+  "version": "1.0.0",
+  "description": "Api web para el manejo de una empresa de creditos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonio Dubon",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "pg": "^8.13.0",
+    "sequelize": "^6.37.4"
+  }
+}
