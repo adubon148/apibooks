@@ -2,7 +2,7 @@ const env = {
     database: 'webapidb_hfmk',
     username: 'webapidb_hfmk_user',
     password: 'LiFoYQ2De1XhStZEu0VyoEGCcLHB2Dai',
-    host: 'dpg-cs86ua5svqrc73bl7cf0-a.oregon-postgres.render.com',
+    host: 'dpg-cs86ua5svqrc73bl7cf0-a',
     dialect: 'postgres',
     pool: {
       max: 5,
