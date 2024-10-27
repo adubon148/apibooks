@@ -31,7 +31,6 @@ exports.retrieveAllautores = (req, res) => {
     Autor.findAll()
         .then(userautores => {
             res.status(200).json({
-                message: "se han obtenido todos los autores con exito!",
                 autores: userautores
             });
         })
