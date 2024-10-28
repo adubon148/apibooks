@@ -16,6 +16,8 @@ let rtlibro = require('./app/routers/libro.router.js');
 let rtclients = require('./app/routers/cliente.router.js');
 let rttipolibro = require('./app/routers/tipolibro.router.js');
 
+
+
 const cors = require('cors')
 const corsOptions = {
   origin: "*",
