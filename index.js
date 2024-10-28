@@ -18,7 +18,7 @@ let rttipolibro = require('./app/routers/tipolibro.router.js');
 
 const cors = require('cors')
 const corsOptions = {
-  origin: '*',
+  origin: 'http://localhost:4200',
   optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
