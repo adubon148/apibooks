@@ -9,6 +9,7 @@ exports.create = (req, res) => {
         cliente.dpi = req.body.dpi;
         cliente.nombre = req.body.nombre;
         cliente.apellido = req.body.apellido;
+        cliente.edad = req.body.edad;
         cliente.direccion = req.body.direccion;
         cliente.Nacionalidad = req.body.Nacionalidad;
         cliente.telefono = req.body.telefono;
@@ -21,7 +22,7 @@ exports.create = (req, res) => {
             
             res.status(200).json({
                 message: "Se ha creado satisfactoriamente el cliente con DPI: " + result.dpi,
-                ciente: result,
+                cliente: result,
             });
         });
     }catch(error){
