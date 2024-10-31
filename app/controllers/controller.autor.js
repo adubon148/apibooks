@@ -124,7 +124,7 @@ exports.deleteById = async (req, res) => {
             await autor.destroy();
             res.status(200).json({
                 message: "Se ha borrado el autor con id = " + autorid,
-                User: user,
+                autor: autor,
             });
         }
     } catch(error) {
