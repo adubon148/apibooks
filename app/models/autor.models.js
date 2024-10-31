@@ -1,5 +1,3 @@
-
-
 module.exports = (sequelize, Sequelize) => {
 	 autor = sequelize.define('autor', {	
 	  id: {
