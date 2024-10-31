@@ -22,7 +22,7 @@ exports.create = (req, res) => {
             
             res.status(200).json({
                 message: "Se ha creado satisfactoriamente el cliente con DPI: " + result.dpi,
-                cliente: result,
+                cliente: result
             });
         });
     }catch(error){
