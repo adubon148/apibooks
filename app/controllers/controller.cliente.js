@@ -94,6 +94,7 @@ exports.updateById = async (req, res) => {
                 dpi: req.body.dpi,
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
+                edad:req.body.edad,
                 direccion: req.body.direccion,
                 Nacionalidad: req.body.Nacionalidad,
                 telefono: req.body.telefono,
