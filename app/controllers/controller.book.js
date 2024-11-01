@@ -10,6 +10,7 @@ exports.create = (req, res) => {
         libro.AñoPublicacion = req.body.AñoPublicacion;
         libro.descrpcion = req.body.descrpcion;
         libro.autorId = req.body.autorId;
+        llibro.tipoid = req.body.tipoid;
         
         
         Libro.create(libro).then(result => {    
@@ -87,7 +88,9 @@ exports.updateById = async (req, res) => {
             let updatedObject = {
               Username: req.body.Username,
               password: req.body.password,
-              nombre: req.body.nombre
+              nombre: req.body.nombre,
+              autorId:req.body.autorId,
+              tipoid:req.body.tipoid
             }
             let result = await Libro.update(updatedObject, {returning: true, where: {id: libroid}});
             

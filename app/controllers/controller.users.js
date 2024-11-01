@@ -56,6 +56,7 @@ exports.getUserById = (req, res) => {
               usuarios: user
           });
       })
+      
       . catch(error => {
         // log on console
         console.log(error);
