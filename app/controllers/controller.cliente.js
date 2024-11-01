@@ -139,7 +139,7 @@ exports.deleteById = async (req, res) => {
             await cliente.destroy();
             res.status(200).json({
                 message: "Se ha borrado el cliente con id = " + libroid,
-                libro: libro,
+                cliente: cliente,
             });
         }
     } catch(error) {
