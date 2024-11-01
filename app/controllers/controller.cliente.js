@@ -138,7 +138,7 @@ exports.deleteById = async (req, res) => {
         } else {
             await cliente.destroy();
             res.status(200).json({
-                message: "Se ha borrado el cliente con id = " + libroid,
+                message: "Se ha borrado el cliente con id = " + clienteid,
                 cliente: cliente,
             });
         }
