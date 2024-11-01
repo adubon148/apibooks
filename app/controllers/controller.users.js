@@ -14,7 +14,7 @@ exports.create = (req, res) => {
         User.create(user).then(result => {    
             
             res.status(200).json({
-                message: "Se ha creado satisfactoriamente el usuario con ID: " + result.id,
+                message: "Se ha creado satisfactoriamente el usuario con ID: " + result.Username,
                 user: result,
             });
         });
@@ -48,7 +48,7 @@ exports.retrieveAllUsers = (req, res) => {
 
 exports.getUserById = (req, res) => {
  
-  let id = req.params.id;
+  let id = req.params.Username;
   User.findByPk(id)
       .then(user => {
           res.status(200).json({
@@ -71,7 +71,7 @@ exports.getUserById = (req, res) => {
 
 exports.updateById = async (req, res) => {
     try{
-        let userid = req.params.id;
+        let userid = req.params.Username;
         let user = await User.findByPk(userid);
     
         if(!user){
@@ -84,16 +84,16 @@ exports.updateById = async (req, res) => {
         } else {    
             // update new change to database
             let updatedObject = {
-              Username: req.body.Username,
+              
               password: req.body.password,
               nombre: req.body.nombre
             }
-            let result = await User.update(updatedObject, {returning: true, where: {id: userid}});
+            let result = await User.update(updatedObject, {returning: true, where: {Username: userid}});
             
             // return the response to client
             if(!result) {
                 res.status(500).json({
-                    message: "Error -> no se puede editar usuario con id = " + req.params.id,
+                    message: "Error -> no se puede editar usuario con id = " + req.params.Username,
                     error: "Can NOT Updated",
                 });
             }
@@ -105,7 +105,7 @@ exports.updateById = async (req, res) => {
         }
     } catch(error){
         res.status(500).json({
-            message: "Error -> no se puede editar usuario con id = " + req.params.id,
+            message: "Error -> no se puede editar usuario con id = " + req.params.Username,
             error: error.message
         });
     }
@@ -113,7 +113,7 @@ exports.updateById = async (req, res) => {
 
 exports.deleteById = async (req, res) => {
     try{
-        let userid = req.params.id;
+        let userid = req.params.Username;
         let user = await User.findByPk(userid);
 
         if(!user){
@@ -130,7 +130,7 @@ exports.deleteById = async (req, res) => {
         }
     } catch(error) {
         res.status(500).json({
-            message: "Error -> NO Se ha borrado el usuario con id = " + req.params.id,
+            message: "Error -> NO Se ha borrado el usuario con id = " + req.params.Username,
             error: error.message,
         });
     }

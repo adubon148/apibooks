@@ -14,5 +14,8 @@
     "express": "^4.21.1",
     "pg": "^8.13.0",
     "sequelize": "^6.37.4"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
