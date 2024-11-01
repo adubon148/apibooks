@@ -114,7 +114,7 @@ exports.updateById = async (req, res) => {
 
             res.status(200).json({
                 message: "actualizacion exitosa de libro con id = " + clienteid,
-                libro: updatedObject,
+                cliente: updatedObject,
             });
         }
     } catch(error){
