@@ -10,7 +10,7 @@ exports.create = (req, res) => {
         libro.AñoPublicacion = req.body.AñoPublicacion;
         libro.descrpcion = req.body.descrpcion;
         libro.autorId = req.body.autorId;
-        llibro.tipoid = req.body.tipoid;
+        libro.tipoid = req.body.tipoid;
         
         
         Libro.create(libro).then(result => {    
@@ -103,7 +103,7 @@ exports.updateById = async (req, res) => {
             }
 
             res.status(200).json({
-                message: "actualizacion exitosa de libro con id = " + userid,
+                message: "actualizacion exitosa de libro con id = " + libroid,
                 libro: updatedObject,
             });
         }
