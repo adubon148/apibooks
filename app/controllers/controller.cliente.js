@@ -79,7 +79,7 @@ exports.getClienteById = (req, res) => {
 exports.updateById = async (req, res) => {
     try{
         let clienteid = req.params.dpi;
-        let cliente = await Libro.findByPk(clienteid);
+        let cliente = await Cliente.findByPk(clienteid);
     
         if(!cliente){
             // return a response to client
