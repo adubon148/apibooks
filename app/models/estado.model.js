@@ -2,7 +2,7 @@ module.exports = (sequelize, Sequelize) => {
 	const estado = sequelize.define('estado', {	
 	  
 	id: {
-			type: Sequelize.STRING,
+			type: Sequelize.INTEGER,
 			primaryKey: true,
             autoIncrement:true
 	},
