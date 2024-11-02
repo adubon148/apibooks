@@ -7,8 +7,14 @@ module.exports = (sequelize, Sequelize) => {
 	  fechaprestamo: {
 			type: Sequelize.DATEONLY
 	  },
-	  estado: {
-			type: Sequelize.STRING
+	  idestado: {
+			type: Sequelize.INTEGER,
+			references: {
+				model: 'estado', // Nombre del modelo relacionado
+				key: 'id'
+			},
+			onUpdate: 'CASCADE',
+			onDelete: 'SET NULL'
   	},
 	  idlibro: {
 			type: Sequelize.INTEGER,
