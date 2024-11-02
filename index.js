@@ -16,6 +16,7 @@ let rtlibro = require('./app/routers/libro.router.js');
 let rtclients = require('./app/routers/cliente.router.js');
 let rttipolibro = require('./app/routers/tipolibro.router.js');
 let rtPrstm = require('./app/routers/prestamo.router.js');
+let rtEstado = require('./app/routers/estado.router.js');
 
 
 

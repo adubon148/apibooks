@@ -1,21 +1,19 @@
 const db = require('../config/db.config.js');
-const TipoLibro = db.tipolibro;
+const Estado = db.estado;
 
 exports.create = (req, res) => {
-    let tlibro = {};
+    let estado = {};
 
     try{
         
-        tlibro.tipo = req.body.tipo;
-        tlibro.descripcion = req.body.descripcion;
-        tlibro.preciorenta = req.body.preciorenta;
+        estado.estado = req.body.estado;
+        estado.descripcion = req.body.descripcion;        
         
-        
-        TipoLibro.create(tlibro).then(result => {    
+        Estado.create(estado).then(result => {    
             
             res.status(200).json({
                 message: "Se ha creado satisfactoriamente la categoria de libro con ID: " + result.id,
-                TipoLibro: result,
+                estado: result,
             });
         });
     }catch(error){
@@ -26,13 +24,13 @@ exports.create = (req, res) => {
     }
 }
 
-exports.retrieveAlltipos = (req, res) => {
+exports.retrieveAllestados = (req, res) => {
     
-    TipoLibro.findAll()
-        .then(tipoInfos => {
+    Estado.findAll()
+        .then(estadoInfos => {
             res.status(200).json({
-                message: "se han obtenido todos las categorias de libros con exito!",
-                tipos: tipoInfos
+                message: "se han obtenido todos los estados de prestamo con exito!",
+                estados: estadoInfos
             });
         })
         . catch(error => {
@@ -46,14 +44,14 @@ exports.retrieveAlltipos = (req, res) => {
         });
 }
 
-exports.gettipoLibroById = (req, res) => {
+exports.getById = (req, res) => {
  
   let id = req.params.id;
-  TipoLibro.findByPk(id)
-      .then(tipolobro => {
+  Estado.findByPk(id)
+      .then(estado => {
           res.status(200).json({
               message: " Se ha encontrado satisfactoriamente la categoria con ID: = " + id,
-              Categoria: tipolobro
+              estado: estado
           });
       })
       . catch(error => {
@@ -71,37 +69,36 @@ exports.gettipoLibroById = (req, res) => {
 
 exports.updateById = async (req, res) => {
     try{
-        let tipoid = req.params.id;
-        let tipo = await TipoLibro.findByPk(tipoid);
+        let estadoid = req.params.id;
+        let estado = await Estado.findByPk(estadoid);
     
-        if(!tipo){
-            // return a response to client
+        if(!estado){
+           
             res.status(404).json({
-                message: "No se ha encontrado la categoria de libro con ID = " + tipoid,
-                Cateogoria: "",
+                message: "No se ha encontrado la categoria con ID = " + estadoid,
+                estado: "",
                 error: "404"
             });
         } else {    
-            // update new change to database
+            
             let updatedObject = {
-                tipo: req.body.tipo,
-                descripcion: req.body.descripcion,
-                preciorenta: req.body.preciorenta,
+                estado: req.body.estado,
+                descripcion: req.body.descripcion
                 
             }
-            let result = await TipoLibro.update(updatedObject, {returning: true, where: {id: tipoid}});
+            let result = await Estado.update(updatedObject, {returning: true, where: {id: estadoid}});
             
-            // return the response to client
+            
             if(!result) {
                 res.status(500).json({
-                    message: "Error -> no se puede editar la categrua de libro con id = " + req.params.id,
+                    message: "Error -> no se puede editar la categrua  con id = " + req.params.id,
                     error: "Can NOT Updated",
                 });
             }
 
             res.status(200).json({
-                message: "actualizacion exitosa de libro con id = " + tipoid,
-                libro: updatedObject,
+                message: "actualizacion exitosa con id = " + estadoid,
+                estado: updatedObject,
             });
         }
     } catch(error){
@@ -114,24 +111,24 @@ exports.updateById = async (req, res) => {
 
 exports.deleteById = async (req, res) => {
     try{
-        let tipoid = req.params.id;
-        let tipo = await TipoLibro.findByPk(tipoid);
+        let estadoid = req.params.id;
+        let estado = await TipoLibro.findByPk(estadoid);
 
-        if(!tipo){
+        if(!estado){
             res.status(404).json({
-                message: "No existe categoria con id = " + tipoid,
+                message: "No existe categoria con id = " + estadoid,
                 error: "404",
             });
         } else {
-            await tipo.destroy();
+            await estado.destroy();
             res.status(200).json({
-                message: "Se ha borrado la categoria con id = " + tipoid,
-                tipo: tipo,
+                message: "Se ha borrado la categoria con id = " + estadoid,
+                estado: estado,
             });
         }
     } catch(error) {
         res.status(500).json({
-            message: "Error -> NO Se ha borrado la categoria de libro con id = " + req.params.id,
+            message: "Error -> NO Se ha borrado la categoriacon id = " + req.params.id,
             error: error.message,
         });
     }
