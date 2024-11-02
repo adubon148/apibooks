@@ -112,7 +112,7 @@ exports.updateById = async (req, res) => {
 exports.deleteById = async (req, res) => {
     try{
         let estadoid = req.params.id;
-        let estado = await TipoLibro.findByPk(estadoid);
+        let estado = await Estado.findByPk(estadoid);
 
         if(!estado){
             res.status(404).json({
