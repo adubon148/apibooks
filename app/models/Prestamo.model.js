@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-	const cliente = sequelize.define('prestamo', {	
+	const Prestamo = sequelize.define('prestamo', {	
 	  id: {
 			type: Sequelize.INTEGER,
 			primaryKey: true
@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
 			onDelete: 'SET NULL'
 	  },
 	  idcliente: {
-			type: Sequelize.STRING,
+			type: Sequelize.INTEGER,
 			references: {
 				model: 'cliente', // Nombre del modelo relacionado
 				key: 'dpi'
@@ -42,5 +42,5 @@ module.exports = (sequelize, Sequelize) => {
     freezeTableName: true
 })
 
-return cliente;
+return Prestamo;
 }
