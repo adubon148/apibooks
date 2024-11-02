@@ -2,7 +2,8 @@ module.exports = (sequelize, Sequelize) => {
 	const Prestamo = sequelize.define('prestamo', {	
 	  id: {
 			type: Sequelize.INTEGER,
-			primaryKey: true
+			primaryKey: true,
+			autoIncrement:true
     },
 	  fechaprestamo: {
 			type: Sequelize.DATEONLY
