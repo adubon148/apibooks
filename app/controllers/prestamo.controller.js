@@ -28,7 +28,7 @@ exports.create = (req, res) => {
     }
 }
 
-exports.retrieveAllUsers = (req, res) => {
+exports.retrieveAll = (req, res) => {
     
     Prstm.findAll()
         .then(userPrestms => {

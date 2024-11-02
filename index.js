@@ -15,6 +15,7 @@ let rtAutor = require('./app/routers/autor.router.js');
 let rtlibro = require('./app/routers/libro.router.js');
 let rtclients = require('./app/routers/cliente.router.js');
 let rttipolibro = require('./app/routers/tipolibro.router.js');
+let rtPrstm = require('./app/routers/prestamo.router.js');
 
 
 
@@ -31,6 +32,7 @@ app.use('/', rtAutor);
 app.use('/', rtlibro);
 app.use('/', rtclients);
 app.use('/', rttipolibro);
+app.use('/', rtPrstm);
 
 app.get("/",(req,res) => {
   
