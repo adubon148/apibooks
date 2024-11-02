@@ -11,6 +11,9 @@ module.exports = (sequelize, Sequelize) => {
 	  nombre: {
 			type: Sequelize.STRING
 	  }
+	},{
+		paranoid: true,
+		freezeTableName: true
 	});
 	
 	return user;
