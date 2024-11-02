@@ -16,7 +16,7 @@ exports.create = (req, res) => {
         Prstm.create(prstm).then(result => {    
             
             res.status(200).json({
-                message: "Se ha creado satisfactoriamente el usuario con ID: " + result.id,
+                message: "Se ha creado satisfactoriamente el prestamo con ID: " + result.id,
                 prestamo: result,
             });
         });
@@ -33,7 +33,7 @@ exports.retrieveAll = (req, res) => {
     Prstm.findAll()
         .then(userPrestms => {
             res.status(200).json({
-                message: "se han obtenido todos los usuarios con exito!",
+                message: "se han obtenido todos los prestamos con exito!",
                 prestamos: userPrestms
             });
         })
@@ -100,19 +100,19 @@ exports.updateById = async (req, res) => {
             // return the response to client
             if(!result) {
                 res.status(500).json({
-                    message: "Error -> no se puede editar usuario con id = " + req.params.id,
+                    message: "Error -> no se puede editar prestamo con id = " + req.params.id,
                     error: "Can NOT Updated",
                 });
             }
 
             res.status(200).json({
-                message: "actualizacion exitosa de usuario con id = " + prstmid,
+                message: "actualizacion exitosa de prestamo con id = " + prstmid,
                 prestamo: updatedObject,
             });
         }
     } catch(error){
         res.status(500).json({
-            message: "Error -> no se puede editar usuario con id = " + req.params.id,
+            message: "Error -> no se puede editar prestamo con id = " + req.params.id,
             error: error.message
         });
     }
@@ -125,19 +125,19 @@ exports.deleteById = async (req, res) => {
 
         if(!prestamo){
             res.status(404).json({
-                message: "No existe usuario con id = " + pretmid,
+                message: "No existe prestamo con id = " + pretmid,
                 error: "404",
             });
         } else {
             await prestamo.destroy();
             res.status(200).json({
-                message: "Se ha borrado el usuario con id = " + pretmid,
+                message: "Se ha borrado el prestamo con id = " + pretmid,
                 prestamo: prestamo,
             });
         }
     } catch(error) {
         res.status(500).json({
-            message: "Error -> NO Se ha borrado el usuario con id = " + req.params.id,
+            message: "Error -> NO Se ha borrado el prestamo con id = " + req.params.id,
             error: error.message,
         });
     }
