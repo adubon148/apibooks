@@ -28,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
 			onUpdate: 'CASCADE',
 			onDelete: 'SET NULL'
 	  },
-	  user: {
+	  userid: {
 			type: Sequelize.STRING,
 			references: {
 				model: 'user', // Nombre del modelo relacionado
