@@ -37,6 +37,7 @@ exports.retrieveAllUsers = (req, res) => {
                 prestamos: userPrestms
             });
         })
+
         . catch(error => {
           
           console.log(error);
@@ -48,14 +49,14 @@ exports.retrieveAllUsers = (req, res) => {
         });
 }
 
-exports.getUserById = (req, res) => {
+exports.getById = (req, res) => {
  
-  let id = req.params.Username;
-  User.findByPk(id)
-      .then(user => {
+  let id = req.params.id;
+  Prstm.findByPk(id)
+      .then(prestamo => {
           res.status(200).json({
-              message: " Se ha encontrado satisfactoriamente el usuario con ID: = " + id,
-              usuarios: user
+              message: " Se ha encontrado satisfactoriamente el prestamo con ID: = " + id,
+              prestamos: prestamo
           });
       })
       
@@ -74,41 +75,44 @@ exports.getUserById = (req, res) => {
 
 exports.updateById = async (req, res) => {
     try{
-        let userid = req.params.Username;
-        let user = await User.findByPk(userid);
+        let prstmid = req.params.id;
+        let prestamo = await Prstm.findByPk(prstmid);
     
-        if(!user){
+        if(!prestamo){
             // return a response to client
             res.status(404).json({
-                message: "No se ha encontrado el usuario con ID = " + userid,
-                user: "",
+                message: "No se ha encontrado el usuario con ID = " + prstmid,
+                prestamo: "",
                 error: "404"
             });
         } else {    
             // update new change to database
             let updatedObject = {
-              
-              password: req.body.password,
-              nombre: req.body.nombre
+        
+                fechaprestamo: req.body.fechaprestamo,
+                idestado: req.body.idestado,
+                idlibro: req.body.idlibro,
+                idcliente: req.body.idcliente,
+                userid: req.body.userid,
             }
-            let result = await User.update(updatedObject, {returning: true, where: {Username: userid}});
+            let result = await Prstm.update(updatedObject, {returning: true, where: {id: prstmid}});
             
             // return the response to client
             if(!result) {
                 res.status(500).json({
-                    message: "Error -> no se puede editar usuario con id = " + req.params.Username,
+                    message: "Error -> no se puede editar usuario con id = " + req.params.id,
                     error: "Can NOT Updated",
                 });
             }
 
             res.status(200).json({
-                message: "actualizacion exitosa de usuario con id = " + userid,
-                user: updatedObject,
+                message: "actualizacion exitosa de usuario con id = " + prstmid,
+                prestamo: updatedObject,
             });
         }
     } catch(error){
         res.status(500).json({
-            message: "Error -> no se puede editar usuario con id = " + req.params.Username,
+            message: "Error -> no se puede editar usuario con id = " + req.params.id,
             error: error.message
         });
     }
@@ -116,24 +120,24 @@ exports.updateById = async (req, res) => {
 
 exports.deleteById = async (req, res) => {
     try{
-        let userid = req.params.Username;
-        let user = await User.findByPk(userid);
+        let pretmid = req.params.id;
+        let prestamo = await Prstm.findByPk(pretmid);
 
-        if(!user){
+        if(!prestamo){
             res.status(404).json({
-                message: "No existe usuario con id = " + userid,
+                message: "No existe usuario con id = " + pretmid,
                 error: "404",
             });
         } else {
-            await user.destroy();
+            await prestamo.destroy();
             res.status(200).json({
-                message: "Se ha borrado el usuario con id = " + userid,
-                User: user,
+                message: "Se ha borrado el usuario con id = " + pretmid,
+                prestamo: prestamo,
             });
         }
     } catch(error) {
         res.status(500).json({
-            message: "Error -> NO Se ha borrado el usuario con id = " + req.params.Username,
+            message: "Error -> NO Se ha borrado el usuario con id = " + req.params.id,
             error: error.message,
         });
     }
