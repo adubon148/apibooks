@@ -34,6 +34,7 @@ app.use('/', rtlibro);
 app.use('/', rtclients);
 app.use('/', rttipolibro);
 app.use('/', rtPrstm);
+app.use('/',rtEstado);
 
 app.get("/",(req,res) => {
   
