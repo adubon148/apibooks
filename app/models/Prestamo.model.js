@@ -10,6 +10,7 @@ module.exports = (sequelize, Sequelize) => {
 	  },
 	  idestado: {
 			type: Sequelize.INTEGER,
+			defaultValue: 1,
 			references: {
 				model: 'estado', // Nombre del modelo relacionado
 				key: 'id'
